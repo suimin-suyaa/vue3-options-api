@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalScope</title>
+</head>
+<body>
+  <div id="app">
+    {{ number_format(price) }}
+  </div>
+
+  <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script> <!--CDN-->
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          price: 1000
+        }
+      },
+      methods: {
+        number_format(val) {
+          return val.toLocaleString();
+        }
+      }
+    });
+    const vm = app.mount('#app');
+  </script>
+</body>
+</html>
+
+<!-- methodsやcomputed（算出プロパティ）を使用してコンポーネントに登録したフィルターは、そのコンポーネントの中だけで使用できるローカルスコープとなり、ほかのコンポーネントからは隠蔽される。
+特定のコンポーネントの中だけで使う固有のフィルターはなるべくローカルスコープに登録した方がコンポーネントの独立性を保てる -->
