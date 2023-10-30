@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resize</title>
+</head>
+<body>
+  <div id="app">
+    ウィンドウの横幅：{{ width  }}<br>
+    ウィンドウの縦幅：{{ height }}
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp ({
+  data() {
+    return {
+      //ウィンドウの内側の幅（縦、横）を取得する
+      width: window.innerWidth,
+      height: window.innerHeight
+    }
+  },
+  created() {
+    // イベントハンドラを登録
+    addEventListener('resize',this.resizeHandler);
+  },
+  beforeUnmount() {
+    // イベントハンドラの解除
+    removeEventListener('resize',this.resizeHandler);
+  },
+  methods: {
+    // イベントハンドラ
+    resizeHandler($event) {
+      // 現在のウィンドウサイズでプロパティを更新する
+      this.width = $event.taeget.innerWidth;
+      this.height = $event.target.innerHeight;
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
