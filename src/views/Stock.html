@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock</title>
+</head>
+<body>
+  <div id ="app">
+    <template v-if="stock >=1" >
+      <span class="num">残り{{ stock }}個</span>
+      <button class="btn" @click="onDeleteItem"></button>
+    </template>
+    <template v-else>在庫切れ</template>
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp ({
+  data() {
+    return {
+      stock: 10
+    }
+  },
+  methods: {
+    onDeleteItem() {
+      this.stock--;
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
+
+<!-- 
+・templateはhtml5から追加された要素
+・書くだけでは表示されない、ブラウザで表示させるにはJSの処理が必要
+https://qiita.com/saka212/items/ac77e778b7e323749e61 
+・-- は値をひとつ減らす記法
+-->
