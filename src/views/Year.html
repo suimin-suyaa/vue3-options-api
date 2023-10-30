@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Year</title>
+</head>
+<body>
+  <div id ="app">
+    <input type="number" v-model="year">
+    <div v-if="isUrudoshi">
+      {{ year }}年はうるう年です
+    </div>
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp ({
+    data() {
+      return {
+        year: (new Date()).getFullYear(),
+      }
+    },
+    computed: {
+      isUrudoshi() {
+        if((this.year%4 === 0) && (this.year%100 !== 0) ||
+        // 4で割り切れて100で割り切れない場合、または400で割り切れる場合
+        (this.year%400 === 0)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+  })
+  const vm = app.mount('#app')
+  // appのIDをもつ要素にマウントされる
+</script>
