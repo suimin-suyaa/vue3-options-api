@@ -42,3 +42,12 @@ const app = Vue.createApp ({
 })
 const vm = app.mount('#app');
 </script>
+
+<!-- 
+・v-on(@click)で検知できないイベントはaddEventListener関数を使用してイベントハンドラ登録する
+（Vue.jsを介して登録をしていない）
+・addEventListenerは登録が早い方が良い為、以下ライフサイクルのタイミングでの登録を検討する
+    created
+    mounted
+・Vue.jsを介さずに登録したイベントハンドラは不要になったタイミング（beforeUnmountなど）でremoveEventListener関数を使用して登録を解除しなければならない 
+-->
