@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MousemoveEvent</title>
+</head>
+<body>
+  <div id ="app">
+    <p>マウスカーソルの位置：{{point.x}}, {{point.y}}</p>
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp ({
+  data() {
+    return {
+      point: {
+        x: 0,
+        y: 0
+      }
+    }
+  },
+  created () {
+    // イベントハンドラの登録
+    addEventListener('mousemove',this.mousemoveHandler);
+  },
+  // イベントハンドラの解除
+  beforeUnmount() {
+    removeEventListener('mousemove',this.mousemoveHandler);
+  },
+  methods: {
+    mousemoveHandler($event) {
+      this.point.x = $event.clientX;
+      this.point.y = $event.clientY;
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
+<!-- 
+28/32行目
+・mousemove...そのカーソルが動いた時、イベント
+・addEventListenerの第二引数に渡す関数（this.mousemoveHandler)はイベント発生時に呼び出されるコールバック関数。この関数は一般的にイベントオブジェクトを受け取る。事前に定義したメソッド名である必要がある
+
+36/37行目
+・client...コンピューターやシステムを利用するユーザを指す
+・本プログラムの場合、 $event.clientX/Yはマウスを動かしたユーザの座標を示す 
+-->
