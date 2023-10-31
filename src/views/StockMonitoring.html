@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockMonitoring</title>
+</head>
+<body>
+  <div id ="app">
+    <template v-if="stock >= 1">
+      <p>残り{{ stock }}個</p>
+      <button class="btn" @click="onDeleteItem">削除</button>
+    </template>
+    {{ message }}
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp ({
+  data() {
+    return {
+      stock: 10,
+      message:''
+    }
+  },
+  methods: {
+    // 削除ボタンのイベントハンドラ
+    onDeleteItem() {
+      this.stock --;
+    }
+  },
+  watch: {
+    // 在庫が変化した時に呼び出されるハンドラ
+    stock(newStock, oldStock) {
+      if (newStock === 0)
+      this.message = "売り切れ";
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
