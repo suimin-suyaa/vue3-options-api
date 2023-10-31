@@ -62,7 +62,13 @@ const vm = app.mount('#app');
 ・イベントが発生した際、イベントオブジェクト（特別なオブジェクトを生成）してイベントハンドラの引数で渡してくれる
 ・($event) 詳細情報を含むイベントオブジェクトを受け取る際、慣習的に$を記述する。引数に（＄event)を記述しないとイベントハンドラ内で$eventにアクセスできない。
 ・$event.target
-＞イベントの対象を指す(HTML,DOMの状態を指す)
+＞イベントの対象を指す(イベントが発生したDOMノードそのものを表す)
 ・innerWidth/innerHeight
 ＞ウィンドウ幅、高さを表す
+
+38/39行目
+・this.width = $event.taeget.innerWidth;
+＞risezeイベントの大元→windowオブジェクト
+targetにはwindowオブジェクトが代入されている
+その為、windowオブジェクトが持つinnerWidth,innerHeightプロパティをtargetから引き出すことが可能
 -->
