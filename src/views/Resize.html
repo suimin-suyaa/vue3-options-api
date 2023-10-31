@@ -44,10 +44,24 @@ const vm = app.mount('#app');
 </script>
 
 <!-- 
+22/23行目
+・window.innerWidth/Window.innerHeight
+＞windowはブラウザウィンドウ自体を指す、区切ることでブラウザウィンドウ自体の縦、横幅という意味になる
+
+28行目
 ・v-on(@click)で検知できないイベントはaddEventListener関数を使用してイベントハンドラ登録する
 （Vue.jsを介して登録をしていない）
 ・addEventListenerは登録が早い方が良い為、以下ライフサイクルのタイミングでの登録を検討する
     created
     mounted
+
+30行目
 ・Vue.jsを介さずに登録したイベントハンドラは不要になったタイミング（beforeUnmountなど）でremoveEventListener関数を使用して登録を解除しなければならない 
+
+36行目
+・($event) 詳細情報を含むイベントオブジェクトを受け取る際、慣習的に$を記述する。引数に（＄event)を記述しないとイベントハンドラ内で$eventにアクセスできない
+・$event.target
+＞イベントの対象を指す、ウィンドウ
+・innerWidth/innerHeight
+＞ウィンドウ幅、高さを表す
 -->
