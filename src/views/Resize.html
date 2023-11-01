@@ -46,9 +46,10 @@ const vm = app.mount('#app');
 <!-- 
 22/23行目
 window.innerWidth/Window.innerHeight
-  window...ブラウザウィンドウ自体を指すグローバルオブジェクト
-  innerWidth/innerHeight...ウィンドウ内側の横/縦を表すプロパティ
-
+  window
+    ブラウザウィンドウ自体を指すグローバルオブジェクト
+  innerWidth/innerHeight
+    ウィンドウ内側の横/縦を表すプロパティ
   (意味)
   ウィンドウ全体の内側の横/縦を戻り値としている
 
@@ -67,14 +68,12 @@ addEventListener('resize',this.resizeHandler);
     Vueインスタンスを指す、この場合はVueインスタンス内にあるresizeHandlerメソッドを指している
   this.resizeHandler
     addEventListenerによって呼び出されるコールバック関数。イベント毎にaddEventListenerに渡される
-
   (意味）
   ウィンドウがリサイズされる枚にresizeHandlerメソッドが呼び出される
-
-  ・v-on(@click)で検知できないイベントはJSのaddEventListener関数を使用してイベントハンドラ登録する（Vue.jsを介して登録をしていない）
-  ・addEventListenerは登録が早い方が良い為、以下ライフサイクルのタイミングでの登録を検討する
-      created
-      mounted
+    ・v-on(@click)で検知できないイベントはJSのaddEventListener関数を使用してイベントハンドラ登録する（Vue.jsを介して登録をしていない）
+    ・addEventListenerは登録が早い方が良い為、以下ライフサイクルのタイミングでの登録を検討する
+        created
+        mounted
 
 30行目
 beforeUnmount()
