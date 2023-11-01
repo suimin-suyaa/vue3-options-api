@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="app">
-    ウィンドウの横幅：{{ width  }}<br>
+    ウィンドウの横幅：{{ width }}<br>
     ウィンドウの縦幅：{{ height }}
   </div>
 </body>
@@ -45,30 +45,64 @@ const vm = app.mount('#app');
 
 <!-- 
 22/23行目
-・window.innerWidth/Window.innerHeight
-＞windowはブラウザウィンドウ自体を指す、区切ることでブラウザウィンドウ自体の縦、横幅という意味になる
+window.innerWidth/Window.innerHeight
+  window...ブラウザウィンドウ自体を指すグローバルオブジェクト
+  innerWidth/innerHeight...ウィンドウ内側の横/縦を表すプロパティ
+
+  (意味)
+  ウィンドウ全体の内側の横/縦を戻り値としている
+
+26行目
+created()
+  ・Vueのライフサイクルの一つ
+  ・コンポーネントのインスタンスが生成され、dataオプションに定義したデータがリアクティブになったタイミング
 
 28行目
-・v-on(@click)で検知できないイベントはaddEventListener関数を使用してイベントハンドラ登録する
-（Vue.jsを介して登録をしていない）
-・addEventListenerは登録が早い方が良い為、以下ライフサイクルのタイミングでの登録を検討する
-    created
-    mounted
+addEventListener('resize',this.resizeHandler);
+  addEventListener
+    イベントリスナー（特定のイベントが発生した際に、それに対応する処理を実行すること）を追加する為のメソッド
+  resize
+    リサイズイベント
+  this
+    Vueインスタンスを指す、この場合はVueインスタンス内にあるresizeHandlerメソッドを指している
+  this.resizeHandler
+    addEventListenerによって呼び出されるコールバック関数。イベント毎にaddEventListenerに渡される
+
+  (意味）
+  ウィンドウがリサイズされる枚にresizeHandlerメソッドが呼び出される
+
+  ・v-on(@click)で検知できないイベントはJSのaddEventListener関数を使用してイベントハンドラ登録する（Vue.jsを介して登録をしていない）
+  ・addEventListenerは登録が早い方が良い為、以下ライフサイクルのタイミングでの登録を検討する
+      created
+      mounted
 
 30行目
-・Vue.jsを介さずに登録したイベントハンドラは不要になったタイミング（beforeUnmountなど）でremoveEventListener関数を使用して登録を解除しなければならない 
+beforeUnmount()
+    ・Vueのライフサイクルの一つ
+    ・コンポーネントのインスタンスが破棄される直前
+    ・Vue.jsを介さずに登録したイベントハンドラは不要になったタイミング（beforeUnmountなど）でremoveEventListener関数を使用して登録を解除しなければならない 
 
 36行目
-・イベントが発生した際、イベントオブジェクト（特別なオブジェクトを生成）してイベントハンドラの引数で渡してくれる
-・($event) 詳細情報を含むイベントオブジェクトを受け取る際、慣習的に$を記述する。引数に（＄event)を記述しないとイベントハンドラ内で$eventにアクセスできない。
-・$event.target
-＞イベントの対象を指す(イベントが発生したDOMノードそのものを表す)
-・innerWidth/innerHeight
-＞ウィンドウ幅、高さを表す
+resizeHandler($event)
+  ($event)
+    イベントオブジェクト（そのイベントに関する詳細情報を持つオブジェクト。自動で生成される。）
+    ・イベントオブジェクトを受け取り、resizeHandlerに渡している
+    ・Vueではイベントオブジェクトを記述する際、慣習的に$を記述する。（JSでは記述しない）
+    ・引数に（＄event)を記述しないとresizeHandlerメソッドで$eventを参照できない
+  resizeHandler
+    Vueインスタンス内で生成されたメソッド名
 
 38/39行目
-・this.width = $event.taeget.innerWidth;
-＞risezeイベントの大元→windowオブジェクト
-targetにはwindowオブジェクトが代入されている
-その為、windowオブジェクトが持つinnerWidth,innerHeightプロパティをtargetから引き出すことが可能
+this.width = $event.taeget.innerWidth;
+  this.width
+    Vueインスタンス内のwidthプロパティを指す
+  $event
+    イベントオブジェクト
+  target
+    イベントインターフェース読み取り専用のプロパティ
+  $event.taeget
+    受け取ったイベント情報を参照している（DOMノードを指す）
+    ・resizeイベントの大元はwhindowオブジェクト。その為、windowオブジェクトが持つinnerWidth,innerHeightプロパティをtargetで引き出すことが可能
+  (意味)
+  マスタッシュの中のwidthは受け取ったイベントオブジェクトの内側の横幅を表示させる
 -->
