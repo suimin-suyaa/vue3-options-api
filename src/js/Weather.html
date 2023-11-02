@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather</title>
+</head>
+<body>
+  <title>Weather</title>
+</body>
+</html>
+<script>
+let rainfall= 60;
+switch(true) {
+  case rainfall < 20:
+    console.log('明日の天気は晴れです');
+    break;
+  case (20 <= rainfall && rainfall <60):
+  console.log('明日の天気は曇りです');
+    break;
+  default:
+    console.log('明日の天気は雨です');
+    break;
+}
+</script>
+
+<!-- 
+15行目
+値をtrueにすることでcase判定に式を記述することができる
+ただしswich(true)はバグを発生させる可能性があるため非推奨 
+-->
