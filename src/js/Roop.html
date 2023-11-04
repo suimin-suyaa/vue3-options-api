@@ -57,3 +57,15 @@ for (let i = 1; i <= 2; i++) {
 つまり2回処理を繰り返している
 ※for文ではコンソールの出力が終了したあとにインクリメントされる 
 -->
+
+【無名関数】
+let getRect = function( h , w ){
+  return h * w ;
+}
+console.log(getRect( 9 * 16));
+
+【アロー関数】
+let getRect = ( h, w ) => ( h * w );
+
+  ・処理ステートメントが1つなら{}の省略可能
+  ・同時に結果が戻り値になる為、returnの省略も可能
