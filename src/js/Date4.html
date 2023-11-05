@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date4</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth() +1;
+  let day = today.getDate();
+  let todayWeek = today.getDay();
+  let dName = ['日','月','火','水','木','金'];
+  let dWeek = dName[todayWeek];
+  console.log( year + '年' + month + '月' + day + '日' +' (' + dWeek + ')');
+</script>
