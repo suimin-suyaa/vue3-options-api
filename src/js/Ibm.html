@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBM</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+let weight;
+weight = prompt('体重は何キロですか？');
+let height;
+height = prompt('身長は何センチですか？');
+let bmi = weight/ (height*height);
+if (bmi < 18.5) {
+  alert ('あなたは痩せ気味です');
+  }else if (bmi < 25) {
+  alert('あなたは肥満ではありません');
+  }else {
+    alert ('あなたは肥満です');
+  }
+</script>
+
+<!-- 
+13行目/15行目
+let Weight/Height;
+  letは初期値を省略することができる
+  constは初期化必須のためこの書き方だとエラーがでる
+prompt
+  ユーザに入力を促すダイアログ 
+-->

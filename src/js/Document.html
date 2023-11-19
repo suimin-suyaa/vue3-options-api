@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="timeOfDay">只今の時刻</p>
+  <input type="button" value="時刻を書き換える" onclick="showDay();">
+</body>
+</html>
+<script>
+  function showDay() {
+    let timeOfDay = document.getElementById('timeOfDay');
+    let nowDate = new Date(); //現在の時刻を変数に代入。Dateは組み込みオブジェクト
+    timeOfDay.innerText = nowDate.toLocaleString(); //pの内側の要素（文字）は取得した時刻＋言語に合わせた時刻を表示させる
+  }
+//DOM操作
+</script>
+

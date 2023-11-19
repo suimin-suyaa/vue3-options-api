@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+let checkkey ;
+for ( i = 0; i < 1000; i++) {
+  checkkey = prompt('「1」を入力すると判定を開始します');
+  if ( checkkey == '1') {
+  }else{
+    i = 1000;
+  }
+}
+alert('プログラムを終了します');
+
+let userName;
+userName = prompt('あなたの名前を入力してください');
+
+let weight;
+weight = prompt('あなたの体重を入力してください');
+
+let height;
+height = prompt('あなたの身長を入力してください') /100;
+
+let myDate;
+myDate = userName + 'さんは' + bmiCal( weight , height );
+alert ( myDate );
+
+function bmiCal ( weight , height ){
+  let bmi;
+  bmi = weight / ( height * height 
+  );
+  let message;
+  if ( bmi < 18.5) {
+    message = '痩せ気味です';
+  }else if ( bmi < 25 ){
+    messsge = '標準体重です';
+  }else {
+    message = '太り気味です';
+  }
+  return message;
+}
+</script>

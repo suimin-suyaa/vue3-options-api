@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date2</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = ( '0' + (today.getMonth() + 1)).slice(-2);
+  let day = ( '0' + (today.getDate() + 1)).slice(-2);
+  console.log( year + '年' + month + '月' + day + '日');
+
+</script>
+
+<!-- 
+13行目
+  変数宣言+初期化。組み込みオブジェクトのDate()を初期値としている。
+  new演算子を使用してDate()オブジェクトをインスタンス化している。
+14行目
+  変数宣言+初期化。組み込みオブジェクトのDate()のメソッドtoday.getFullYear();を初期値としている
+  today.getFullYear();
+    指定された日時を返す
+15行目
+  変数宣言+初期化。組み込みオブジェクトDate()のメソッドtoday.getMonthを初期値としている
+  today.getMonth
+    現在の月を返すDateオブジェクトのメソッド
+  ( '0' + (today.getMonth() + 1)).slice(-2);
+
+  ( '0' + (today.getMonth() + 1))
+    月の先頭に0を足している。+1はJSが0からカウントされる仕様で1月からカウントしたいから加算
+  .slice(-2);
+    上記だけだと10月になったとき、「010」になってしまう。
+    意味は「後ろの2桁を取得する」
+    10、11、12月になったときに「010」「020」になってしまうのを防ぐ為記述 
+-->

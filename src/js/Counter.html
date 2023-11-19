@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+</head>
+<body>
+<button onclick="startCounter()">START</button>   <!-- クリックされたときに関数を呼び出している -->
+  <button onclick="stopCounter()">STOP</button>   <!-- クリックされたときに関数を呼び出している -->
+  <p id="counter"></p>
+</body>
+</html>
+<script>
+let countId =  NaN , count = 0;
+function startCounter() {     
+  countId = setInterval( tictack , 1000 );
+}
+function stopCounter() {
+  clearInterval ( countId );
+}
+function tictack() {
+  count++;
+  document.getElementById('counter').textContent = count; 
+}
+</script>
+<style>
+  body {
+    padding: 2em;
+  }
+  p#counter {
+    font-size: 2em;
+    font-weight: bold;
+    text-indent: 1.2em;
+    color: #09f;
+  }
+</style>
+
+<!-- 
+16行目
+  変数宣言、初期化をしている。NaNは処理の結果が数値として表せなかった時の表現。初期値は0に設定
+17行目
+  関数宣言
+18行目
+  setInterval:グローバルオブジェクトwindowのメソッド。一定の間隔で関数を呼び出す。
+  第一引数に関数、第二引数に1000秒までカウント
+20行目
+  関数宣言
+21行目
+  clearInterval:グローバルオブジェクトwindowのメソッド。setIntervalに呼び出されていた処理を止める。引数でcleanIntervalに初期値を渡している為、ストップウォッチが止まる仕組み。
+24行目
+  変数の初期値0からインクリメント（1加算）を定義
+25行目
+  document
+    グローバルオブジェクト。
+  getElementByID
+    documentオブジェクトのメソッド。指定されたID要素をElementから取得することを意味する。ここにカウント数字が出力される
+  textContent
+    getElementByIDのプロパティ。innnerTextは人間が読める要素のみを取得するが、textContentプロパティはscriptやstyle含むすべての中身を取得 
+-->
