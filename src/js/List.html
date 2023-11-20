@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List</title>
+</head>
+<body>
+  <ul id="list"></ul>
+  <input type="button" value="項目を追加する" onclick="appenedItem();">
+</body>
+</html>
+<script>
+  function appendItem(){
+    let li = document.createElement( 'li' );
+    let text = document.createTextNode( '新しい商品アイテム' );
+    li.appendChild(text);
+    let list = document.getElementById( 'list' );
+    list.appendChild(li);
+  }
+</script>
+
+<!-- 
+16行目
+  createElement..documentオブジェクトのメソッド。要素を生成する
+  ulの中にli要素を生成している
+
+17行目
+  createTextNode..documentオブジェクトのメソッド。テキストノードに追加する
+  「新しい商品アイテム」が出力される
+
+18行目
+  appendChild..documentオブジェクトのメソッド。指定した要素を小要素として追加する
+  ボタンを押下するたび、liの末尾にテキストノード「新しい商品アイテム」が追加されていく
+
+19行目
+  HTML上のIDを取得
+
+20行目
+  取得したリスト要素に新しいリストアイテムを追加。これにより文書内のリストに新しいアイテムが追加される 
+-->
