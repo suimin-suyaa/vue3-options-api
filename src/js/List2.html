@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List2</title>
+</head>
+<body>
+  <ul id="list"></ul>
+  <input type="button" value="項目を追加する" onclick="appendItem();">
+  <input type="button" value="項目を削除する" onclick="removeItem();">
+</body>
+</html>
+<script>
+  function appendItem(){
+    let li = document.createElement( 'li' );
+    let itemText = document.createTextNode( '新しいアイテム' );
+    li.appendChild(itemText);
+    let list = document.getElementById( 'list' );
+    list.appendChild( li );
+  }
+  function removeItem(){
+    let parentElement = document.getElementById( 'list' );
+    let lists = parentElement.getElementsByTagName( 'li' );
+    let removeIndex = lists.length -1;
+    parentElement.removeChild( lists[removeIndex]);
+  }
+</script>
+
+<!-- 
+24行目
+  ul要素の内側を取得
+
+25行目
+  getElementsByTagName...documentオブジェクトのメソッド。
+  指定したタグ名を取得する、この場合はli要素をし取得している
+
+26行目
+  li要素を1つずつ削除
+
+27行目
+  親要素から指定された要素をボタンが押下された際に1つずつ削除
+  parentElementが親要素として指定 
+-->
