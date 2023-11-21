@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List4</title>
+</head>
+<body>
+  <h1>Windowオブジェクト</h1>
+  <h2 id="subheading">ドキュメント</h2>
+  <h3>getElementById()メソッド</h3>
+  <p>指定したID名の文字列に一致するドキュメント要素を取得します。特定の要素に素早くアクセスすることができます。</p>
+</body>
+</html>
+<script>
+  let subTitle = document.getElementById('subheading');
+  subTitle.innerText = 'documentオブジェクト';
+  subTitle.style.color = '#09f';
+  console.log(document);
+</script>
+
+<!-- 
+17行目
+  変数subTitleを宣言、documentオブジェクトのメソッドgetElementByIDを使用してid subheadingを取得。
+
+18行目
+  変数の内側のテキスト（innnerText）を'documentオブジェクト'に書き換える
+
+19行目
+  変数.style.colorにて青を指定。JSから書き換えることが可能
+
+20行目
+  console.logでdocumentオブジェクトを取得
+-->
