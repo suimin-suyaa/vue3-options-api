@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binding2</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" @input="yearInputHandler" :value="year"><br>
+    {{ year }}
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      year: (new Date()).getFullYear()
+    }
+  },
+  methods: {
+    yearInputHandler($event){
+      this.year = $event.target.value;
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
+
+<!-- 
+11行目
+  inputのイベントが発生したらyearInputHandlerを呼び出している。初期値はyear内処理を指定。
+
+25行目
+  yearInputHandlerに引数としてeventオブジェクトを渡している。$を記述するのはVueの決まり
+
+27行目
+  yearにイベントの現在の値を参照し、代入している 
+-->
+
+<!-- テキストボックス（改行できないテキストボックス） -->
