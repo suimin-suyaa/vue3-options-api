@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event</title>
+</head>
+<body>
+  <input id="btn-click" type="button" value="このボタンをクリック！">
+</body>
+</html>
+<script>
+  window.onload = function() {
+    let message = document.getElementById('btn-click');
+    message.addEventListener('click',function(){
+      console.log('イベントが発生しました!');
+    })
+  }
+  message.addEventListener('click',function(){
+    alert('ボタンをクリックしましたね');
+  })
+</script>
+
+<!-- 
+14行目
+  Windowオブジェクトの文書が読み込まれたとき、Documentオブジェクトを使用してIDを取得
+
+15行目
+  Messageオブジェクトに対しイベントを登録している。Clickイベントが発生した際にconsoleに出力
+  
+20行目
+  Messageオブジェクトで、クリックイベントが発生した際、アラートで「ボタンをクリックしましたね」を出力させている 
+-->
+
+<!-- 
+  要素オブジェクト名.addEventListener ('イベントタイプ名',無名関数{
+  実行する処理
+}); 
+-->
