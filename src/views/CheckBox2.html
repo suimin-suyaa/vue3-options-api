@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CheckBox2</title>
+</head>
+<body>
+  <div id ="app">
+    <p>ご注文をお選びください:{{ selection }}</p>
+    <label>
+      <input type="checkbox" v-model="answer" value="ケーキ">
+    </label>
+    <label>
+      <input type="checkbox" v-model="answer" value="紅茶">
+    </label>
+    <label>
+      <input type="checkbox" v-model="answer" value="コーヒー">
+    </label>
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      answer: []
+    }
+  },
+  computed: {
+    selection() {
+      return this.answer.join();
+    }
+  }
+})
+</script>
+
+<!-- 
+join()...JSの関数。配列を連結させることができる
+戻り値を配列にすることによって複数選択が可能 
+conputed...算出プロパティ。計算をし、値を返す際に使用する。
+-->
