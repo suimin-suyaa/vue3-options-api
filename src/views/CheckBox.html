@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>checkbox</title>
+</head>
+<body>
+  <div id ="app">
+    <p>ケーキはお好きですか？:
+      {{answer}}
+    </p>
+    <input type="checkbox" v-model="answer" true-value ="はい" false-value ="いいえ">
+    <label for="cake">チェックしてください</label>
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp ({
+  data(){
+    return {
+      answer: 'はい'
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
+
+<!-- 
+単体のチェックボックス
+  v-modelでバインドしたプロパティには真偽値が設定される。
+  true-value ="はい" false-value ="いいえ"を設定しないと、「true」「false」で出力される 
+-->
