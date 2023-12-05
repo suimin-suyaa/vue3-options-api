@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CheckBox3</title>
+</head>
+<body>
+  <div id="app">
+    <p>ご注文をお選びください: {{ selection }}</p>
+  <label>
+    <input type="checkbox" v-model="answer" value="ケーキ">ケーキ
+  </label>
+  <label>
+    <input type="checkbox" v-model="answer" value="紅茶">紅茶
+  </label>
+  <label>
+    <input type="checkbox" v-model="answer" value="コーヒー">コーヒー
+  </label>
+</div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      answer: []
+    }
+  },
+  computed: {
+    selection() {
+      return this.answer.join();
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
+
+戻り値に配列を準備し、computedで配列を連結させることでマスタッシュに連結した文字列を出力させることが可能。
+単一のチェックボックスではtrue or falseが返されるが複数のチェックボックスの場合は文字列が返される。
+join()...arrayオブジェクトの組み込みメソッド。配列の要素を連結し文字列に変換することが可能
