@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RadioButton2</title>
+</head>
+<body>
+  <div id="app">
+    <p>分類：{{ selectedCategory }}</p>
+    <select v-model="category" multiple>
+      <option value="宿泊費">宿泊費</option>
+      <option value="食費">食費</option>
+      <option value="交通費">交通費</option>
+    </select>
+  </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      category: []
+    }
+  },
+  computed: {
+    selectedCategory() {
+      return this.category.length >=1 ? this.category.join() : '';
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
+
+<!-- 
+複数選択ができるよう、戻り値に空の配列を準備
+マスタッシュには、選択されたときにcategoryの長さが1より大きい時に、categoryの文字列を連結する処理をしている。
+？...条件演算子。条件に続いて疑問符 (?)、そして条件が真値であった場合に実行する式、コロン (:) が続き、条件が偽値であった場合に実行する式が最後に来る。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Conditional_operator＞＞参照
+multiple...フォームコントロールが1つ以上の値を受け入れることができる属性。これにより複数選択が可能。
+-->

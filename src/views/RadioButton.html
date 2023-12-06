@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RadioButton</title>
+</head>
+<body>
+  <div id ="app">
+    <p>当店の利用頻度は？：{{ answer }}</p>
+    <select v-model="answer">
+      <option disabled value="">選択してください</option>
+      <option value="はじめて">はじめて</option>
+      <option value="週1回以上">週1回以上</option>
+      <option value="月に2回以上">月に2回以上</option>
+      <option value="半月に1回">半月に1回</option>
+  </select>
+</div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+const app = Vue.createApp({
+  data() {
+    return {
+      answer: ''
+    }
+  }
+})
+const vm = app.mount('#app');
+</script>
+<!-- 
+ラジオボタンにバインドするプロパティにはvalueの値が代入される
+-->
