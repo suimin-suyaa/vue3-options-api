@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RadioButton2</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="show = !show">表示の切り替え</button>
+      <transition>
+        <p v-if="show">
+          こんにちは<br />
+          私はVue.jsの勉強中です。<br />
+        </p>
+      </transition>
+    </div>
+  </body>
+</html>
+
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        show: true
+      }
+    }
+  })
+  const vm = app.mount('#app')
+</script>
+
+<style>
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
+  }
+  /* 表示開始と非表示終了時に透明度0（非表示）にしている */
+
+  .v-enter-to,
+  .v-leave-from {
+    opacity: 1;
+  }
+  /* 表示終了時と非表示の開始時は透明度1（表示）にしている */
+
+  .v-enter-active,
+  .v-leave-active {
+    transition: opacity 0.5s;
+  }
+  /* 表示中と非表示中に0.5秒をかけて変化させるようにしている */
+</style>
+
+<!-- 
+buttonをクリックする度に式が反転する。
+デフォルトはtrueのため、表示される。 
+-->
