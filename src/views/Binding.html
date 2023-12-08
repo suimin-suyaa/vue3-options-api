@@ -1,28 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binding</title>
-</head>
-<body>
-  <div id="app">
-    <input type="number" v-model="year"><br>
-    {{ year }}
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binding</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="number" v-model="year" /><br />
+      {{ year }}
+    </div>
+  </body>
 </html>
 <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
 <script>
-const app = Vue.createApp ({
-  data(){
-    return {
-      year: (new Date()).getFullYear()
+  const app = Vue.createApp({
+    data() {
+      return {
+        year: new Date().getFullYear()
+      }
     }
-  }
-})
-const vm = app.mount('#app');
+  })
+  const vm = app.mount('#app')
 </script>
 
 <!-- 

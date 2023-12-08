@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calendar</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>ご希望到着日：{{ arraival_date }}</p>
+      <input type="date" v-model="arraival_date" />
+    </div>
+  </body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        arraival_date: this.formatDate(new Date())
+      }
+    },
+    methods: {
+      formatDate(dt) {
+        return [
+          dt.getFullYear(),
+          ('00' + (dt.getMonth() + 1)).slice(-2),
+          ('00' + dt.getDate()).slice(-2)
+        ].join('-')
+      }
+    }
+  })
+  const vm = app.mount('#app')
+</script>
+
+<!-- 
+21行目
+  ・戻り値に最新の日付を取得し、指定したいフォーマットに変換するよう処理している（YYYYMMDD）
+25行目 
+  ・引数のdtはフォーマットされる日付オブジェクトを指定している
+      https://techdocs.broadcom.com/jp/ja/ca-enterprise-software/intelligent-automation/automic-process-automation/04-3-05/reference/operators-reference/system-functions/formatdate-function.html＞＞参照
+27行目
+  ・日付オブジェクトから、dateオブジェクトの年を取得
+      https://www.javadrive.jp/javascript/date_class/index8.html＞＞参照
+28行目
+  ・文字列の00は、1桁の数字の場合に前に0をつけて埋める役割をする。この処理をすることで2桁で表示可能。
+  ・(dt.getMonth() + 1)...日付オブジェクトから月を取得。0〜11の整数で表される為、12月を表示させるために1を足している。
+  ・.slice(-2)...arrayインスタンスのメソッド。配列の一部から取り出す。
+      この場合、後ろから2桁を取り出す。
+      前に00を足し、後ろに数字が足されると「001」「0012」などとなってしまう＞＞後ろから2桁の数字を取り出すことで年の表示「01」「12」と表示が可能になる
+  ・join('-')...arrayメソッド。配列の要素を順に連結する。この場合、配列間をハイフンで繋げられた結果が出力される
+-->
