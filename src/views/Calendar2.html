@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calendar</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>ご希望到着日：{{ arraival_date }}</p>
+      <input type="date" v-model="arraival_date" :min="min_date" />
+    </div>
+  </body>
+</html>
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        arraival_date: null,
+        min_date: null
+      }
+    },
+    created() {
+      let dt = new Date()
+      dt.setDate(dt.getDate() + 1)
+      this.arraival_date = this.formatDate(dt)
+      this.min_date = this.arraival_date
+    },
+    methods: {
+      formatDate(dt) {
+        return [
+          dt.getFullYear(),
+          ('00' + (dt.getMonth() + 1)).slice(-2),
+          ('00' + dt.getDate()).slice(-2)
+        ].join('-')
+      }
+    }
+  })
+  const vm = app.mount('#app')
+</script>
+
+<!-- 
+12行目
+  min...入力可能な数字の制限。HTMLの仕様で日付コントロールのmin属性を入力すると、指定した日付より以前の選択が不可になる
+  またmin_dateにバインドしている
+21/22行目
+  null...値が存在しないことを意図的に示す
+25行目
+  Vueのライフサイクルフック、コンポーネントのインスタンスが生成されdateオプションに定義したデータがリアクティブになった時
+26行目
+  変数dtは最新のdateオブジェクトを代入している
+27行目
+  現在設定されている月からのDateオブジェクトの日をセットする。日付を取得し+1にすることで明日の日付をセットしている
+29行目
+  min_dateとarraival_dateは同じであることを示す
+
+初期値をnullにする理由
+・inputタグの使用上、初期値がnullである場合に自動で現在の日付をセットする仕様。nullであっても問題ないため
+・ただし、上記コードはcreatedで明日の日付をセットしているため、コンポーネントが生成されてすぐに明日の日付が表示される 
+-->
